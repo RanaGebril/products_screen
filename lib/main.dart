@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:products_screen/app_theme_data.dart';
 import 'package:products_screen/products_screen.dart';
 
 void main() {
@@ -13,6 +14,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      theme: AppThemeData.lightTheme,
       initialRoute: ProductsScreen.route_name,
       routes: {
         ProductsScreen.route_name : (context) => ProductsScreen()
