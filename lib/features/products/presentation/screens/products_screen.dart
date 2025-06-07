@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:products_screen/main.dart';
-import 'package:products_screen/product_item.dart';
-import 'package:products_screen/repo/products_local_impl.dart';
-import 'package:products_screen/repo/products_remote_impl.dart';
-import 'bloc/cubit.dart';
-import 'bloc/cubit_states.dart';
+import 'package:products_screen/data/local/products_local_impl.dart';
+import 'package:products_screen/data/remote/products_remote_impl.dart';
+import '../../../bloc/cubit.dart';
+import '../../../bloc/cubit_states.dart';
+import '../widgets/product_item.dart';
 
 class ProductsScreen extends StatelessWidget {
   static const String route_name = "products";

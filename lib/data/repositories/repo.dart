@@ -1,4 +1,4 @@
-import 'package:products_screen/models/Product.dart';
+import 'package:products_screen/data/models/Product.dart';
 
 abstract class ProductsRepo {
   Future<List<Product>> fetchProducts();

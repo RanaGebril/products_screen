@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
-import 'package:products_screen/app_theme_data.dart';
-import 'package:products_screen/products_screen.dart';
+import 'package:products_screen/core/theme/app_theme_data.dart';
+import 'features/products/presentation/screens/products_screen.dart';
 
 bool isConnected = false;
 void main() async {

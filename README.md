@@ -1,16 +1,36 @@
-# products_screen
+# 🛍️ Products App - Flutter Task
 
-A new Flutter project.
+A Flutter application that displays a list of products from [FakeStore API](https://fakestoreapi.com), featuring offline caching and real-time internet connectivity checks.
 
-## Getting Started
+## ✨ Features
+- **Product Grid**: Responsive 2-column grid layout with elegant cards
+- **BLoC/Cubit State Management**: Clean state handling (Loading/Success/Error)
+- **Offline Support**: Hive local caching when offline
+- **Connection-Aware**: Auto-switches between API/local data
 
-This project is a starting point for a Flutter application.
+## 📸 Screenshots
+| <img src="screenshots/screenShot1.jpeg" width="300"> | <img src="screenshots/screenShot2.jpeg" width="300"> |
 
-A few resources to get you started if this is your first Flutter project:
+## 🛠 Tech Stack
+- **Flutter**: 3.19.5
+- **State Management**: BLoC/Cubit
+- **Local Cache**: Hive
+- **Networking**: http + InternetConnectionChecker
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## 🏗 Project Structure
+lib/
+├── core/
+│ ├── constants/ AppColors.dart
+│ ├── theme/ AppThemeData.dart
+│ └── utils/ CashProducts.dart
+├── data/
+│ ├── local/ ProductsLocalImpl.dart
+│ ├── remote/ ProductsRemoteImpl.dart
+│ ├── models/ Product.dart
+│ └── repositories/ ProductsRepo.dart
+└── features/
+├── bloc/ ProductsCubit.dart, cubit_states.dart
+└── products/
+└── presentation/
+├── screens/ ProductsScreen.dart
+└── widgets/ ProductItem.dart      └── widgets/ ProductItem

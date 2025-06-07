@@ -1,6 +1,7 @@
 import 'package:hive/hive.dart';
 
-import 'models/Product.dart';
+import '../../data/models/Product.dart';
+
 
 class CashProducts {
   static Box get box => Hive.box('productsBox');

@@ -1,8 +1,8 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:products_screen/bloc/cubit_states.dart';
-import 'package:products_screen/models/Product.dart';
-import 'package:products_screen/repo/repo.dart';
+import 'package:products_screen/data/models/Product.dart';
+import 'package:products_screen/data/repositories/repo.dart';
+import 'package:products_screen/features/bloc/cubit_states.dart';
 
 class ProductsCubit extends Cubit<ProductsScreenStates> {
   ProductsRepo repo;

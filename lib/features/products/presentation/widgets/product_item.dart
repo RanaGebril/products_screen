@@ -1,8 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:products_screen/app_theme_data.dart';
-import 'package:products_screen/models/Product.dart';
-import 'App_colors.dart';
+import 'package:products_screen/core/constants/App_colors.dart';
+import 'package:products_screen/core/theme/app_theme_data.dart';
+import 'package:products_screen/data/models/Product.dart';
 
 class ProductItem extends StatelessWidget {
   final Product product;

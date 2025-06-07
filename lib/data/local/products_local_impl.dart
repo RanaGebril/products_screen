@@ -1,6 +1,6 @@
-import 'package:products_screen/cash_products.dart';
-import 'package:products_screen/models/Product.dart';
-import 'package:products_screen/repo/repo.dart';
+import 'package:products_screen/core/utils/cash_products.dart';
+import 'package:products_screen/data/models/Product.dart';
+import 'package:products_screen/data/repositories/repo.dart';
 
 class ProductsLocalImpl extends ProductsRepo {
   @override
