@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:products_screen/main.dart';
 import 'package:products_screen/product_item.dart';
-
+import 'package:products_screen/repo/products_local_impl.dart';
+import 'package:products_screen/repo/products_remote_impl.dart';
 import 'bloc/cubit.dart';
 import 'bloc/cubit_states.dart';
 
@@ -13,7 +15,11 @@ class ProductsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: BlocProvider(
-        create: (context) => ProductsCubit()..getProducts(),
+        // check internet connection
+        create:
+            (context) => ProductsCubit(
+              isConnected ? ProductsRemoteImpl() : ProductsLocalImpl(),
+            )..getProducts(),
         child: BlocBuilder<ProductsCubit, ProductsScreenStates>(
           builder: (context, state) {
             if (state is GetProductsLoadingState) {
