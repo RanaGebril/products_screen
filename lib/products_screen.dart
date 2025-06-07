@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:products_screen/API_maneger.dart';
-import 'package:products_screen/App_colors.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:products_screen/product_item.dart';
+
+import 'bloc/cubit.dart';
+import 'bloc/cubit_states.dart';
 
 class ProductsScreen extends StatelessWidget {
   static const String route_name = "products";
@@ -10,39 +12,32 @@ class ProductsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.white_color,
-      body: Column(
-        children: [
-          Expanded(
-            child: FutureBuilder(
-              future: ApiManager.getProducts(),
-              builder: (context, snapshot) {
-                if (snapshot.connectionState == ConnectionState.waiting) {
-                  return Center(child: CircularProgressIndicator());
-                }
-                if (snapshot.hasError) {
-                  return Center(child: Text("error"));
-                }
-                if (!snapshot.hasData) {
-                  return const Center(child: Text('No products found'));
-                }
-
-                final products = snapshot.data!;
-                return GridView.builder(
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    childAspectRatio: 0.714,
-                  ),
-
-                  itemBuilder: (context, index) {
-                    return ProductItem(product: products[index]);
-                  },
-                  itemCount: products.length,
+      body: BlocProvider(
+        create: (context) => ProductsCubit()..getProducts(),
+        child: BlocBuilder<ProductsCubit, ProductsScreenStates>(
+          builder: (context, state) {
+            if (state is GetProductsLoadingState) {
+              return const Center(child: CircularProgressIndicator());
+            } else if (state is GetProductsErrorState) {
+              return const Center(child: Text("Error loading products"));
+            }
+            if (ProductsCubit.get(context).products.isEmpty) {
+              return const Center(child: Text("No products available"));
+            }
+            return GridView.builder(
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                childAspectRatio: 0.714,
+              ),
+              itemBuilder: (context, index) {
+                return ProductItem(
+                  product: ProductsCubit.get(context).products[index],
                 );
               },
-            ),
-          ),
-        ],
+              itemCount: ProductsCubit.get(context).products.length,
+            );
+          },
+        ),
       ),
     );
   }
